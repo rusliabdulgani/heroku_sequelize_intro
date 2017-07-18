@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layouts/title %>
+    <%- include ./layouts/style%>
+  </head>
+  <body>
+    <h1><%=header %></h1>
+    <%- include ./layouts/menubar %>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Actions</th>
+      </tr>
+        <% data_students.forEach( data => { %>
+          <tr>
+          <td><%= data.id %></td>
+          <td><%= data.first_name %> </td>
+          <td><%= data.last_name %></td>
+          <td><%= data.email %> </td>
+          <td><a href="/students/<%= data.id %>/addsubject">add subject</a></td>
+          <td>
+            <a href="/students/edit/<%=data.id %>">edit</a>
+            <a href="/students/delete/<%=data.id %>">delete</a>
+          </td>
+          </tr>
+        <% }) %> 
+    </table>
+    <br>
+    <h3><%= err_msg %></h3>
+    <br>
+    <form action="/students" method="post">
+      <table>
+        <tr>
+        <td>First Name:</td>  
+        <td><input type="text" name="First_name" placeholder="input first name"></td>
+        </tr>
+        <tr>
+          <td>Last Name:</td>
+          <td><input type="text" name="Last_name" placeholder="input last name"></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><input type="text" name="Email" placeholder="input email"></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

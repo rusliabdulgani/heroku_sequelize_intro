@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layouts/title %>
+    <%- include ./layouts/style%>
+  </head>
+  <body>
+    <h1><%=header %></h1>
+    <%- include ./layouts/menubar %>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Subject Name</th>
+        <th>Teachers</th>
+        <th>Actions</th>
+        <th>Options</th>
+      </tr>
+        <% let jmlSbj = 1 %>
+        <% data_subject.forEach( data => { %>
+          <tr>
+          <td><%= jmlSbj %><% jmlSbj+=1 %></td>
+          <td><%= data.subject_name %> </td>
+          <td>
+          <% if (data.Teachers.length != 0) { %>
+          <% var jmlTcr = 0 %>
+          <% for (let i = 0 ; i < data.Teachers.length ; i++) { %>
+          <% jmlTcr+=1 %>
+          <%= jmlTcr %>.<%= data.Teachers[i].first_name %> <%= data.Teachers[i].last_name %><br>
+          <% } %>
+          <% } else { %>
+          <%= data_kosong %>
+          <% } %>
+          </td>
+          <td><a href="/subjects/<%= data.id %>/enrolledstudents">Enrolled Students</a></td>
+          <td>
+          <a href="/subjects/edit/<%= data.id %>">edit</a>
+          <a href="/subjects/delete/<%= data.id %>">delete</a>
+          </td>
+          </tr>
+        <% }) %> 
+    </table>
+    <br>
+    <form action="/subjects" method="post">
+      <table>
+        <tr>
+        <td>Subject Name:</td>  
+        <td><input type="text" name="subject_name" placeholder="input subject name"></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

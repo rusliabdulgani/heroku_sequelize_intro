@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layouts/title %>
+  </head>
+  <body>
+    <h3><%= header %></h3>
+    <table border="1">
+        <tr>
+          <td>First Name</td>  
+          <td><%= dataAddSubject.first_name %></td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td><%= dataAddSubject.last_name %></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><%= dataAddSubject.email %></td>
+        </tr>
+        <form action="/students/<%= dataAddSubject.id %>/addsubject" method="post">
+        <tr>
+          <td>Add Subject</td>
+          <td>
+            <select name="SubjectId">
+              <% dataSubject.forEach(dt => { %>
+                <option value="<%= dt.id %>"><%= dt.subject_name %></option>
+              <% }) %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </form>
+    </table>
+    
+  </body>
+</html>

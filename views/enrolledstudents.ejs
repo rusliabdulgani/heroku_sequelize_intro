@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layouts/title %>
+  </head>
+  <body>
+    <h3><%= dataEnrolled[0].Subject.subject_name %></h3>
+    <a href="/subjects">Subject List</a>
+    <table border="1">
+      <tr>
+        <th>Student Name</th>
+        <th>Score</th>  
+        <th>Letter</th>
+      </tr>
+      <% let i = 0 %>
+      <% dataEnrolled.forEach( dt => { %>
+        <tr>
+          <td><%= dt.Student.first_name %> <%= dt.Student.last_name %></td>
+          <% if (dt.score == null) { %>
+          <td><a href="/subjects/givescore/<%= dt.StudentId %>/<%=dt.SubjectId %>">Give Score</a></td>
+          <td>empty</td>
+        <%} else {%>
+          <td><%= dt.score %></td>
+          <td><%= dt.letter %></td>
+          <% } %>
+        </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layouts/title %>
+  </head>
+  <body>
+    <h3><%= header %></h3>
+    <form action="/teachers/edit/<%= data_teacher.id %>" method="post">
+      <table>
+        <tr>
+        <td>First Name:</td>  
+        <td><input type="text" name="first_name" placeholder="input first name" value="<%= data_teacher.first_name %>"></td>
+        </tr>
+        <tr>
+          <td>Last Name:</td>
+          <td><input type="text" name="last_name" placeholder="input last name" value="<%= data_teacher.last_name %>"></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><input type="text" name="email" placeholder="input email" value="<%= data_teacher.email %>"></td>
+        </tr>
+        <tr>
+          <td>Subject Name:</td>
+          <td>
+          <select name="SubjectId">
+            <option value="<%=data_subject[0].id%>"><%=data_subject[(data_teacher.SubjectId-1)].subject_name %></option>
+            <% data_subject.forEach( dt => { %>
+              <option value="<%= dt.id %>"><%= dt.subject_name%></option>
+            <% }) %>
+            
+          </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

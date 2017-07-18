@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layouts/title %>
+  </head>
+  <body>
+    <h3>Give Score</h3>
+    <table border="1">
+        <form action="/subjects/givescore/<%= dataScore[0].StudentId %>/<%= dataScore[0].SubjectId %>" method="post">
+      <tr>
+        <th>Student Name</th>
+        <th>Subject Name</th>
+        <th>Score</th>
+      </tr>
+      <tr>
+        <td><%= dataScore[0].Student.first_name%> <%= dataScore[0].Student.last_name %></td>
+        <td><%= dataScore[0].Subject.subject_name %></td>
+        <td>
+          <input type="text" name="score" placeholder="input score" value="<%=dataScore[0].score%>">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><input type="submit" value="submit"></td>
+      </tr>
+    </form>
+    </table>
+  </body>
+</html>

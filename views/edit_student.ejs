@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./layouts/title %>
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <h3><%= err_msg %></h3>
+    <form action="/students/edit/<%= edit_student.id %>" method="post">
+      <table>
+        <tr>
+        <td>First Name:</td>  
+        <td><input type="text" name="First_name" placeholder="input first name" value="<%= edit_student.first_name %>"></td>
+        </tr>
+        <tr>
+          <td>Last Name:</td>
+          <td><input type="text" name="Last_name" placeholder="input last name" value="<%= edit_student.last_name %>"></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><input type="text" name="Email" placeholder="input email" value="<%= edit_student.email %>"></td>
+        </tr>
+        <tr>
+          <td>Jurusan:</td>
+          <td><input type="text" name="Jurusan" placeholder="input jurusan" value="<%= edit_student.jurusan %>"></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
